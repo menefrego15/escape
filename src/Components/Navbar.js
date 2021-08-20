@@ -7,7 +7,8 @@ import Message from "../Assets/Images/Message.svg";
 
 const Nav = styled.nav`
   width: 100px;
-  height: 500px;
+  height: 650px;
+  margin-left: 20px;
   display: flex;
   color: #fff;
   justify-content: center;
@@ -15,7 +16,8 @@ const Nav = styled.nav`
 `;
 
 const Img = styled.img`
-  width: 70%;
+  width: 100%;
+  border-radius: ${(props) => (props.rounded ? "25px" : "0px")};
 `;
 
 const Ul = styled.ul`
@@ -36,21 +38,38 @@ const Li = styled.li`
   cursor: pointer;
 `;
 
+const Imgdiv = styled.div`
+  width: ${(props) => (props.current || props.avatar ? "45px" : "30px")};
+`;
+
 const Navbar = ({ photoURL }) => {
   return (
     <Nav>
       <Ul>
         <Li>
-          <Img src={Home} />
+          <Imgdiv avatar>
+            <Img rounded src={photoURL} />
+          </Imgdiv>
         </Li>
         <Li>
-          <Img src={Bell} />
+          <Imgdiv current>
+            <Img src={Home} />
+          </Imgdiv>
         </Li>
         <Li>
-          <Img src={Search} />
+          <Imgdiv>
+            <Img src={Bell} />
+          </Imgdiv>
         </Li>
         <Li>
-          <Img src={Message} />
+          <Imgdiv>
+            <Img src={Message} />
+          </Imgdiv>
+        </Li>
+        <Li>
+          <Imgdiv>
+            <Img src={Search} />
+          </Imgdiv>
         </Li>
       </Ul>
     </Nav>
